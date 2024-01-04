@@ -1,0 +1,5 @@
+-This project is Vhost on CRUD.MVC.VAShouse.com
+
+-You can run the project by this command on the termenal within the file directory:  php -S localhost:2000
+
+-
