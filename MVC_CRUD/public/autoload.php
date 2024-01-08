@@ -1,4 +1,7 @@
 <?php
+require_once __DIR__ . '/../vendor/autoload.php';
+
+
 define("DS", DIRECTORY_SEPARATOR);
 define("ROOT_PATH", dirname(__DIR__) . DS);
 define("APP", ROOT_PATH . 'APP' . DS);
@@ -10,14 +13,16 @@ define("VIEWS", APP . 'Views' . DS);
 define("UPLOADS", ROOT_PATH . 'public' . DS . 'uploads' . DS);
 define("EXCEPTIONS", APP . 'Exceptions' . DS);
 define("LIB", APP . 'Library' . DS);
+define("SMARTY_ENGINE", APP . 'SMARTY_ENGINE' . DS);
+define('SITE_URL', 'http://crud.mvc.vashouse.com/');
 
 // configuration files
-require_once CONFIG . 'config.php';
 require_once CONFIG . 'helper.php';
 
-// autoload all classes
-$modules = [ROOT_PATH, APP, CORE, VIEWS, CONTROLLERS, MODELS, CONFIG, EXCEPTIONS, LIB];
-set_include_path(get_include_path() . PATH_SEPARATOR . implode(PATH_SEPARATOR, $modules));
-spl_autoload_register('spl_autoload');
+//to load enviroment variables
+$dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
+$dotenv->load();
+
+use App\Core\App;
 
 new App();

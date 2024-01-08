@@ -1,6 +1,9 @@
 <?php
 declare (strict_types = 1);
 
+namespace App\Core;
+
+
 /**
  * Front end Controller
  */
@@ -10,7 +13,7 @@ class App
     //~~~~~Methods~~~~~
 
     public function __construct(
-        protected string $controller = "HomeController",
+        protected string $controller = "App\\Controllers\\HomeController",
         protected string $action = "index",
         protected array $parameters = []
     ) {
@@ -32,7 +35,7 @@ class App
             $url = explode("/", $url);
 
             //define the controller
-            $this->controller = isset($url[0]) ? ucwords($url[0]) . 'Controller' : 'HomeController';
+            $this->controller = isset($url[0]) ? 'App\\Controllers\\'.ucwords($url[0]) . 'Controller' : 'App\\Controllers\\HomeController';
 
             //definde the method -action-
             $this->action = isset($url[1]) ? $url[1] : 'index';

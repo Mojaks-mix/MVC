@@ -1,7 +1,8 @@
 <?php
 
-function url($name = ''){
-    echo SITE_URL.$name;
+function smarty_function_plugin_url($params, $smarty){
+    $name = isset($params['name']) ? $params['name'] : '';
+    return SITE_URL . $name;
 }
 
 function redirect($url)

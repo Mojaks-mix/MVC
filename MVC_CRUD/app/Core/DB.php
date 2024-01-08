@@ -1,19 +1,25 @@
 <?php
+namespace App\Core;
 
-require_once LIB.'DB/MysqliDb.php';
+use PDO;
 
-class DB{
+class DB
+{
 
     protected $db;
 
-    public function connect(){
-        $database = new MysqliDb(HOST, USER, PASSWORD, DB_NAME);
-        
-        if($database){
+    public function connect()
+    {
+        $database = new PDO(
+            'mysql:host=' . $_ENV['HOST'] . ';dbname=' . $_ENV['DB_NAME'],
+            $_ENV['USER'],
+            $_ENV['PASSWORD'],
+            []);
+
+        if ($database) {
             $this->db = $database;
             return $this->db;
-        }
-        else{
+        } else {
             echo 'database errorrrrr!!!!!!';
         }
     }

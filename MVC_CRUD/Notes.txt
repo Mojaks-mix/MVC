@@ -2,4 +2,8 @@
 
 -You can run the project by this command on the termenal within the file directory:  php -S localhost:2000
 
--
+-composer dump-autoload -o
+
+-composer require smarty/smarty
+
+-composer require vlucas/phpdotenv
